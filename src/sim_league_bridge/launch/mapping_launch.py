@@ -2,6 +2,7 @@ from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
+from launch_ros.actions import Node
 import os
 
 def generate_launch_description():
@@ -18,8 +19,7 @@ def generate_launch_description():
         'mapping_params.yaml'
     )
 
-
-    return LaunchDescription([
+    ld = LaunchDescription([
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(other_launch_file),
             launch_arguments={
@@ -27,3 +27,7 @@ def generate_launch_description():
             }.items()
         ),
     ])
+
+    # ld.add_action(static_tf_node)
+
+    return ld
