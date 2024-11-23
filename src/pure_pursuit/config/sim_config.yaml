@@ -1,6 +1,6 @@
 pure_pursuit:
   ros__parameters:
-    waypoints_path: "/sim_ws/src/pure_pursuit/racelines/e7_floor5_square.csv"
+    waypoints_path: "/sim_ws/src/pure_pursuit/racelines/competition_RAW.csv"
     odom_topic: "/ego_racecar/odom"
     car_refFrame: "ego_racecar/base_link"
     global_refFrame: "map"
@@ -15,8 +15,8 @@ pure_pursuit:
     lookahead_ratio: 8.0 # approximately the max velocity
     K_p: 0.5
     steering_limit: 25.0
-    velocity_percentage: 1.0 # the limit, can only do 1 lap with clean tires
+    velocity_percentage: 0.85 # the limit, can only do 1 lap with clean tires
 
 waypoint_visualizer_node:
   ros__parameters:
-    waypoints_path: "/sim_ws/src/pure_pursuit/racelines/e7_floor5_square.csv"
+    waypoints_path: "/sim_ws/src/pure_pursuit/racelines/competition_RAW.csv"
