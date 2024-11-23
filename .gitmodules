@@ -1,3 +1,6 @@
 [submodule "src/particle_filter"]
 	path = src/particle_filter
 	url = https://github.com/CL2-UWaterloo/particle_filter.git
+[submodule "src/kinematic-icp"]
+	path = src/kinematic-icp
+	url = git@github.com:megalphian/kinematic-icp.git
