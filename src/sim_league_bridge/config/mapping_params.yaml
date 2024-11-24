@@ -16,7 +16,7 @@ slam_toolbox:
     scan_topic: /autodrive/f1tenth_1/lidar
     use_map_saver: true
     mode: mapping #localization
-    scan_queue_size: 10
+    scan_queue_size: 100
 
     # if you'd like to immediately start continuing a map at a given pose
     # or at the dock, but they are mutually exclusive, if pose is given

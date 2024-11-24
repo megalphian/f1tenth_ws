@@ -18,6 +18,13 @@ def generate_launch_description():
         'ekf_params.yaml'
     )
 
+    global_ekf_params_file = os.path.join(
+        get_package_share_directory('sim_league_bridge'),
+        'config',
+        'global_ekf_params.yaml'
+    )
+
+
     ld = LaunchDescription([
         Node(
             package='sim_league_bridge',
@@ -32,13 +39,20 @@ def generate_launch_description():
             output='screen',
             parameters=[ekf_params_file],
            ),
-        IncludeLaunchDescription(
+           IncludeLaunchDescription(
             PythonLaunchDescriptionSource(kinematic_icp_file),
             launch_arguments={
                 'lidar_topic': "/autodrive/f1tenth_1/lidar",
                 'tf_timeout': '1.5'
             }.items()
-        )
+        ),
+        # Node(
+        #     package='robot_localization',
+        #     executable='ekf_node',
+        #     name='ekf_filter_node',
+        #     output='screen',
+        #     parameters=[global_ekf_params_file],
+        #    ),
     ])
 
     return ld

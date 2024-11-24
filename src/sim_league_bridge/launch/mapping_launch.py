@@ -23,7 +23,8 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(other_launch_file),
             launch_arguments={
-                'slam_params_file': mapping_params_file
+                'slam_params_file': mapping_params_file,
+                'use_sim_time': 'true',
             }.items()
         ),
     ])
