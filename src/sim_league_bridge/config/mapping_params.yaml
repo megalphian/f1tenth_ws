@@ -12,11 +12,11 @@ slam_toolbox:
     # ROS Parameters
     odom_frame: odom
     map_frame: map
-    base_frame: f1tenth_1
+    base_frame: lidar
     scan_topic: /autodrive/f1tenth_1/lidar
     use_map_saver: true
     mode: mapping #localization
-    scan_queue_size: 100
+    scan_queue_size: 5
 
     # if you'd like to immediately start continuing a map at a given pose
     # or at the dock, but they are mutually exclusive, if pose is given

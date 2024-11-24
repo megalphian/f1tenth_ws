@@ -43,7 +43,7 @@ def generate_launch_description():
             PythonLaunchDescriptionSource(kinematic_icp_file),
             launch_arguments={
                 'lidar_topic': "/autodrive/f1tenth_1/lidar",
-                'tf_timeout': '1.5'
+                'tf_timeout': '0.5'
             }.items()
         ),
         # Node(

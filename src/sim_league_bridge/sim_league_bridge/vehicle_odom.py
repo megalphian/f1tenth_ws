@@ -142,12 +142,12 @@ class VehicleOdometry(Node):
         msg.pose.pose.orientation.x = quat[0]; msg.pose.pose.orientation.z = quat[2]
         msg.pose.pose.orientation.y = quat[1]; msg.pose.pose.orientation.w = quat[3]
 
-        msg.pose.covariance = [1e-3, 0.0, 0.0, 0.0, 0.0, 0.0, 
-                               0.0, 1e-3, 0.0, 0.0, 0.0, 0.0, 
-                               0.0, 0.0, 1e-3, 0.0, 0.0, 0.0, 
-                               0.0, 0.0, 0.0, 1e-3, 0.0, 0.0, 
-                               0.0, 0.0, 0.0, 0.0, 1e-3, 0.0, 
-                               0.0, 0.0, 0.0, 0.0, 0.0, 1e-3]
+        # msg.pose.covariance = [1e+1, 0.0, 0.0, 0.0, 0.0, 0.0, 
+        #                        0.0, 1e+1, 0.0, 0.0, 0.0, 0.0, 
+        #                        0.0, 0.0, 1e+1, 0.0, 0.0, 0.0, 
+        #                        0.0, 0.0, 0.0, 1e+1, 0.0, 0.0, 
+        #                        0.0, 0.0, 0.0, 0.0, 1e+1, 0.0, 
+        #                        0.0, 0.0, 0.0, 0.0, 0.0, 1e+1]
 
         msg.twist.twist.linear.x = linear_velocity
         msg.twist.twist.angular.z = angular_velocity
