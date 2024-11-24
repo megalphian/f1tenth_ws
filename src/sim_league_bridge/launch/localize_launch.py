@@ -12,12 +12,6 @@ def generate_launch_description():
         'online_node.launch.py'
     )
 
-    ekf_launch_file = os.path.join(
-        get_package_share_directory('robot_localization'),
-        'launch',
-        'ekf.launch.py'
-    )
-
     ekf_params_file = os.path.join(
         get_package_share_directory('sim_league_bridge'),
         'config',
