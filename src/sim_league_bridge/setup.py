@@ -25,7 +25,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'vehicle_odom = sim_league_bridge.vehicle_odom:main'
+            'vehicle_odom = sim_league_bridge.vehicle_odom:main',
+            'vehicle_controller = sim_league_bridge.vehicle_controller:main'
         ],
     },
 )
