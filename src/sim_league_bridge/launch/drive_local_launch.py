@@ -7,7 +7,7 @@ def generate_launch_description():
     ld = LaunchDescription([
         Node(
             package='sim_league_bridge',
-            executable='vehicle_controller',
+            executable='vehicle_controller.py',
             name='vehicle_controller',
             output='screen',
         ),

@@ -22,7 +22,7 @@ def generate_launch_description():
     ld = LaunchDescription([
         Node(
             package='sim_league_bridge',
-            executable='vehicle_odom',
+            executable='vehicle_odom.py',
             name='vehicle_odom',
             output='screen',
         ),

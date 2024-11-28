@@ -132,7 +132,7 @@ class VehicleOdometry(Node):
         self.internal_state.linear_velocity = linear_velocity
         self.internal_state.steering_angle = steering_angle
 
-        msg.header.frame_id = "world"
+        msg.header.frame_id = "odom"
         msg.header.stamp = self.get_clock().now().to_msg()
         msg.child_frame_id = "f1tenth_1"
         msg.pose.pose.position.x = self.internal_state.x
