@@ -132,7 +132,7 @@ class VehicleOdometry(Node):
         self.internal_state.linear_velocity = linear_velocity
         self.internal_state.steering_angle = steering_angle
 
-        msg.header.frame_id = "odom"
+        msg.header.frame_id = "world"
         msg.header.stamp = self.get_clock().now().to_msg()
         msg.child_frame_id = "f1tenth_1"
         msg.pose.pose.position.x = self.internal_state.x
@@ -142,12 +142,12 @@ class VehicleOdometry(Node):
         msg.pose.pose.orientation.x = quat[0]; msg.pose.pose.orientation.z = quat[2]
         msg.pose.pose.orientation.y = quat[1]; msg.pose.pose.orientation.w = quat[3]
 
-        # msg.pose.covariance = [1e+1, 0.0, 0.0, 0.0, 0.0, 0.0, 
-        #                        0.0, 1e+1, 0.0, 0.0, 0.0, 0.0, 
-        #                        0.0, 0.0, 1e+1, 0.0, 0.0, 0.0, 
-        #                        0.0, 0.0, 0.0, 1e+1, 0.0, 0.0, 
-        #                        0.0, 0.0, 0.0, 0.0, 1e+1, 0.0, 
-        #                        0.0, 0.0, 0.0, 0.0, 0.0, 1e+1]
+        msg.pose.covariance = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
+                               0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 
+                               0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 
+                               0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 
+                               0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 
+                               0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
 
         msg.twist.twist.linear.x = linear_velocity
         msg.twist.twist.angular.z = angular_velocity
