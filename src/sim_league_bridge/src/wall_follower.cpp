@@ -22,12 +22,9 @@ private:
 
     void calculate_error(const sensor_msgs::msg::LaserScan::SharedPtr msg, double desired) {
         double theta = 0.0;       // Example value
-        double angle1 = -50; 
-        double angle2 = -80; 
+        double angle1 = this->to_radians(-50); 
+        double angle2 = this->to_radians(-85); 
         double lookahead = 0.5;
-
-        angle1 = angle1 * M_PI / 180;
-        angle2 = angle2 * M_PI / 180;
 
         theta = angle1 - angle2; 
 
@@ -58,18 +55,32 @@ private:
         return kp * error + kd * (error - prev_error) / (current_t - prev_t) + ki * error_integral;
     }
 
-    void callback(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
-        RCLCPP_INFO(this->get_logger(), "I heard: '%f'", msg->ranges[0]);
+    double to_radians(double theta) {
+        return M_PI * theta / 180.0;
+    }
 
+    void callback(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
         // Calculate error
         calculate_error(msg, 0.6);
         // Calculate PID
         double steering = steering_pid();
-        double throttle = 1.0;
+        double desired_vel = 0;
+        // We go slower if we need to a large steering angle correction
+        if (std::abs(steering) >= 0 && std::abs(steering) < this->to_radians(10)) {
+            desired_vel = 1.75;
+        } else if (std::abs(steering) >= this->to_radians(10) && std::abs(steering) < this->to_radians(20)) {
+            desired_vel = 1.25;
+        } else {
+            desired_vel = 0.75;
+        }
+
+        if(current_velocity != desired_vel){
+            current_velocity += (desired_vel - current_velocity) < 0 ? -0.1 : 0.1;
+        }
 
         // Publish
         auto twist = geometry_msgs::msg::Twist();
-        twist.linear.x = throttle;
+        twist.linear.x = current_velocity;
         twist.angular.z = steering;
         twist_pub->publish(twist);
     }
@@ -80,6 +91,7 @@ private:
     double error, prev_error, error_integral;
     double kp, ki, kd;
     double prev_t, current_t;
+    double current_velocity = 0.0;
 };
 
 int main(int argc, char **argv) {
