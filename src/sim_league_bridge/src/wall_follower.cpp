@@ -67,16 +67,16 @@ private:
         double desired_vel = 0;
         // We go slower if we need to a large steering angle correction
         if (std::abs(steering) >= 0 && std::abs(steering) < this->to_radians(10)) {
-            desired_vel = 1.75;
-        } else if (std::abs(steering) >= this->to_radians(10) && std::abs(steering) < this->to_radians(20)) {
-            desired_vel = 1.25;
+            desired_vel = 4.0;
+        }
+        else if (std::abs(steering) >= this->to_radians(10) && std::abs(steering) < this->to_radians(20)) {
+            desired_vel = 1.5;
         } else {
             desired_vel = 0.75;
         }
 
-        if(current_velocity != desired_vel){
-            current_velocity += (desired_vel - current_velocity) < 0 ? -0.1 : 0.1;
-        }
+        double error = desired_vel - current_velocity;
+        current_velocity += 0.05 * error;
 
         // Publish
         auto twist = geometry_msgs::msg::Twist();
