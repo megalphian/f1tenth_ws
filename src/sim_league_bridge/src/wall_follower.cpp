@@ -109,9 +109,9 @@ private:
             desired_vel = 5.0;
         }
         else if (std::abs(steering) >= this->to_radians(5) && std::abs(steering) < this->to_radians(10)) {
-            desired_vel = 2.75;
+            desired_vel = 2.6;
         }
-        else if (std::abs(steering) >= this->to_radians(10) && std::abs(steering) < this->to_radians(30)) {
+        else if (std::abs(steering) >= this->to_radians(10) && std::abs(steering) < this->to_radians(23.5)) {
             desired_vel = 1.5;
         } else {
             desired_vel = 0.75;
