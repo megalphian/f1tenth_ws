@@ -105,16 +105,16 @@ private:
         RCLCPP_INFO(this->get_logger(), "Steering: %f", steering);
 
         // We go slower if we need to a large steering angle correction
-        if (std::abs(steering) >= 0 && std::abs(steering) < this->to_radians(5)) {
+        if (std::abs(steering) >= 0 && std::abs(steering) < this->to_radians(4.0)) {
             desired_vel = 5.0;
         }
-        else if (std::abs(steering) >= this->to_radians(5) && std::abs(steering) < this->to_radians(10)) {
-            desired_vel = 2.6;
+        else if (std::abs(steering) >= this->to_radians(4.0) && std::abs(steering) < this->to_radians(10)) {
+            desired_vel = 2.75;
         }
         else if (std::abs(steering) >= this->to_radians(10) && std::abs(steering) < this->to_radians(23.5)) {
             desired_vel = 1.5;
         } else {
-            desired_vel = 0.75;
+            desired_vel = 0.8;
         }
 
         double error = desired_vel - current_velocity;
