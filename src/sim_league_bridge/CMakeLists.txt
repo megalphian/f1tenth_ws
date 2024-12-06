@@ -36,7 +36,7 @@ ament_python_install_package(${PROJECT_NAME})
 install(PROGRAMS
     sim_league_bridge/vehicle_odom.py
     sim_league_bridge/vehicle_controller.py
-    # sim_league_bridge/wall_follower.py
+    sim_league_bridge/tf_publisher.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
